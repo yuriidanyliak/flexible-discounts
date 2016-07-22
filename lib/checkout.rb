@@ -3,6 +3,7 @@ require_relative 'fruit_tea'
 require_relative 'strawberry'
 require_relative 'coffee'
 require_relative 'apple_juice'
+require_relative 'invoice_presenter'
 
 class Checkout
 
@@ -15,10 +16,14 @@ class Checkout
   end
 
   def total
-    @scanned_products.map(&:price).inject(:+)
+    InvoicePresenter.new(summary).price_with_dollar_sign
   end
 
   private
+
+  def summary
+    @scanned_products.map(&:price).inject(:+)
+  end
 
   PRODUCT_TYPES = {
       FR: 'FruitTea',
