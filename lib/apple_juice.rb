@@ -1,12 +1,12 @@
 require_relative 'product'
 
-class AppleJuice
+class AppleJuice < Product
   attr_reader :name, :price
 
-  def initialize
+  def initialize(code)
     @name = NAME
     @price = PRICE
-    super()
+    super
   end
 
   private

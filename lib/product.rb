@@ -1,7 +1,8 @@
 class Product
-  attr_reader :currency
+  attr_reader :currency, :product_code
 
-  def initialize
+  def initialize(code)
+    @code = code
     @currency = CURRENCY
   end
 

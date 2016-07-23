@@ -1,18 +1,15 @@
-require 'active_support/all'
-require_relative 'fruit_tea'
-require_relative 'strawberry'
-require_relative 'coffee'
-require_relative 'apple_juice'
+require_relative 'product_factory'
 require_relative 'invoice_presenter'
 
 class Checkout
 
-  def initialize
+  def initialize(*offer_rules)
     @scanned_products = []
+    @offer_rules = *offer_rules
   end
 
-  def scan(product_type)
-    @scanned_products << PRODUCT_TYPES[product_type.to_sym].constantize.new
+  def scan(product_code)
+    @scanned_products << ProductFactory.create_by_code(product_code)
   end
 
   def total
@@ -24,11 +21,4 @@ class Checkout
   def summary
     @scanned_products.map(&:price).inject(:+)
   end
-
-  PRODUCT_TYPES = {
-      FR: 'FruitTea',
-      SR: 'Strawberry',
-      CF: 'Coffee',
-      AJ: 'AppleJuice'
-  }
 end
