@@ -3,6 +3,8 @@ Flexible discounts
 
 * Sample implementation of flexible discounts is in the `/lib` folder
 
+* Ruby 2.3.0
+
 * Ruby script for demonstration is called `demo.rb` (such a surprise!). Please run this file to see how this thing works.
 
 * Product inventory:
