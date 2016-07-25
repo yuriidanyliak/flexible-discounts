@@ -8,17 +8,17 @@ module Factories
   class ProductFactory
     class << self
       def create_by_code(product_code)
-        "Products::#{PRODUCT_TYPES[product_code.to_sym]}".constantize.new(product_code)
+        PRODUCT_TYPES[String(product_code)].new
       end
     end
 
     private
 
     PRODUCT_TYPES = {
-        FR: 'FruitTea',
-        SR: 'Strawberry',
-        CF: 'Coffee',
-        AJ: 'AppleJuice'
-    }
+        "FR" => Products::FruitTea,
+        "SR" => Products::Strawberry,
+        "CF" => Products::Coffee,
+        "AJ" => Products::AppleJuice
+    }.freeze
   end
 end

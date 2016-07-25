@@ -1,9 +1,8 @@
 module Products
   class Base
-    attr_reader :currency, :code
+    attr_reader :currency
 
-    def initialize(code)
-      @code = code
+    def initialize
       @currency = 'USD'
     end
 
@@ -12,6 +11,10 @@ module Products
     end
 
     def price
+      raise NotImplementedError
+    end
+
+    def code
       raise NotImplementedError
     end
   end
